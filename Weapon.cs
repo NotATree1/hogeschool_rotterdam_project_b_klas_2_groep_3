@@ -1,12 +1,12 @@
-class Weapon
+public class Weapon
 {
-    public int weapon_id;
-    public string weapon_name_shown;
-    public int power;
-    public Weapon(int weapon_id, string weapon_name_shown, int weapon_power)
+    public int ID;
+    public string Weapon_Name;
+    public int Weapon_Power;
+    public Weapon(int weapon_id, string weapon_name, int weapon_power)
     {
-        this.weapon_id = weapon_id;
-        this.weapon_name_shown = weapon_name_shown;
-        this.weapon_power = weapon_power
+        this.ID = weapon_id;
+        this.Weapon_Name = weapon_name;
+        this.Weapon_Power = weapon_power;
     }
 }
