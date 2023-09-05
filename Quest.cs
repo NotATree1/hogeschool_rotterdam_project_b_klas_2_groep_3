@@ -1,4 +1,4 @@
-class Quest
+public class Quest
 {
     public int Quest_ID;
     public string Quest_Name;
