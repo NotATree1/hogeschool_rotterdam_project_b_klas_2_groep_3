@@ -1,10 +1,11 @@
-class Location
+public class Location
 {
     public int Location_ID;
     public string Location_Name;
     public string Location_Description;
     public string Location_Unlock_Requirements;
     public bool Location_Unlocked;
+        public List<Quest> QuestAvailableHere = new List<Quest>();
     
     public Location(int Location_ID,  string Location_Name,  string Location_Description, string Location_Unlock_Requirements, string Location_Unlocked)
     {

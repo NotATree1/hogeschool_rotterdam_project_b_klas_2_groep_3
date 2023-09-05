@@ -1,4 +1,4 @@
-class Monster
+public class Monster
 {
     public int Monster_ID;
     public string Monster_Name;
