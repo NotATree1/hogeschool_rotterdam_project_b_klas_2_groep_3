@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\groepsopdracht spel maken.csproj",
+      "projectUniqueName": "c:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\hogeschool_rotterdam_project_b_klas_2_groep_3\\groepsopdracht spel maken.csproj",
       "projectName": "groepsopdracht spel maken",
-      "projectPath": "C:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\groepsopdracht spel maken.csproj",
+      "projectPath": "c:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\hogeschool_rotterdam_project_b_klas_2_groep_3\\groepsopdracht spel maken.csproj",
       "packagesPath": "C:\\Users\\rowan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\obj\\",
+      "outputPath": "c:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\hogeschool_rotterdam_project_b_klas_2_groep_3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rowan\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -36,7 +36,7 @@ class SuperAdventure
         }
     }
 
-    static void Main()
+    public SuperAdventure()
     {
         while (true)
         {

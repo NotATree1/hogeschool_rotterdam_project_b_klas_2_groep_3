@@ -2,9 +2,24 @@
 
 class Program
 {
-    public Program()
+    public static void Main()
     {
-        Console.WriteLine("please input your name");
-        string player = Console.ReadLine();
+        World game_world = new World();
+        string player;
+        while (true)
+        {
+            Console.WriteLine("please input your name");
+            player = Console.ReadLine();
+            if (player is not null & player.Length > 0)
+            {
+                break;
+            }
+        }
+        Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
+        Console.WriteLine(game_world.current_location.Location_Description);
+        while (true)
+        {
+            break;
+        }
     }
-}
+}    
