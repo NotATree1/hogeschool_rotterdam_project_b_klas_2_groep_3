@@ -237,7 +237,7 @@ public static class World
             }
             default:
             {
-                return
+                return;
             }
         }
         return current_location;
