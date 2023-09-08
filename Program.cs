@@ -1,14 +1,16 @@
 ﻿// this is the code where we should start
 
-class Program
+
+World game_world = new World();
+string player;
+while (true)
 {
-    public static void Main()
+    Console.WriteLine("please input your name");
+    player = Console.ReadLine();
+    if (player is not null & player.Length > 0)
     {
-        World game_world = new World();
-        
-        Console.WriteLine("please input your name");
-        string player = Console.ReadLine();
-        
-        Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location}");
+        break;
     }
 }
+Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
+Console.WriteLine(game_world.current_location.Location_Description);
