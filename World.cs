@@ -28,12 +28,16 @@ public static class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
+    public Location current_location;
+
     static World()
     {
         PopulateWeapons();
         PopulateMonsters();
         PopulateQuests();
         PopulateLocations();
+
+        current_location = Locations[0];
     }
 
 
@@ -205,5 +209,37 @@ public static class World
         }
 
         return null;
+    }
+
+    public Location MoveLocation(string direction)
+    {
+        switch(direction.ToUpper())
+        {
+            case "N": 
+            {
+                if (current_location.LocationToNorth is null) return current_location;
+                else current_location = current_location.LocationToNorth;
+            }
+            case "E":
+            {
+                if (current_location.LocationToEast is null) return;
+                else current_location = current_location.LocationToEast;
+            }
+            case "S":
+            {
+                if (current_location.LocationToSouth is null) return;
+                else current_location = current_location.LocationToSouth;
+            }
+            case "W":
+            {
+                if (current_location.LocationToWest is null) return;
+                else current_location = current_location.LocationToWest;
+            }
+            default:
+            {
+                return
+            }
+        }
+        return current_location;
     }
 }
