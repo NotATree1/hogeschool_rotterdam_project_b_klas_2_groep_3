@@ -30,15 +30,15 @@ public  class World
 
     public char[,] map = {
         {' ', ' ', ' ', '#', ' ', ' ', ' ',' '},
-        {' ', ' ', '#', 'P', '#', ' ', ' ',' '},
-        {' ', '#', '#', 'A', '#', '#', '#',' '},
-        {'#', 'V', 'F', 'T', 'G', 'B', 'S','#'},
-        {' ', '#', '#', 'H', '#', '#', '#',' '},
+        {' ', ' ', '#', 'p', '#', ' ', ' ',' '},
+        {' ', '#', '#', 'a', '#', '#', '#',' '},
+        {'#', 'v', 'f', 't', 'g', 'b', 's','#'},
+        {' ', '#', '#', 'h', '#', '#', '#',' '},
         {' ', ' ', ' ', '#', ' ', ' ', ' ',' '},
     };
 
     static int playerX = 3; // breedte
-    static int playerY = 2; // lengte
+    static int playerY = 4; // lengte
     public  Location current_location;
 
     public World()
@@ -224,16 +224,43 @@ public  class World
 
     public  Location MoveLocation(string direction)
     {
-        Location before_location = current_location;
+
         string current_direction = direction.ToUpper();
-        if (current_direction == "N") current_location = current_location.LocationToNorth;
-        else if (current_direction == "E") current_location = current_location.LocationToEast;
-        else if (current_direction == "S") current_location = current_location.LocationToSouth;
-        else if (current_direction == "W") current_location = current_location.LocationToWest;
-        if (current_location is null)
+        if (current_direction == "N")
         {
-            current_location = before_location;
-            Console.WriteLine("This is an invalid direction.");
+            if (current_location.LocationToNorth is not null)
+            {
+                playerY -= 1;
+                current_location = current_location.LocationToNorth;
+            }
+            else Console.WriteLine("This is an invalid direction.");
+        }
+        else if (current_direction == "E")
+        {
+            if (current_location.LocationToEast is not null)
+            {
+                playerX += 1;
+                current_location = current_location.LocationToEast;
+            }
+            else Console.WriteLine("This is an invalid direction.");
+        }
+        else if (current_direction == "S")
+        {
+            if (current_location.LocationToSouth is not null)
+            {
+                playerY += 1;
+                current_location = current_location.LocationToSouth;
+            }
+            else Console.WriteLine("This is an invalid direction.");
+        }
+        else if (current_direction == "W")
+        {
+            if (current_location.LocationToWest is not null)
+            {
+                playerX -= 1;
+                current_location = current_location.LocationToWest;
+            }
+            else Console.WriteLine("This is an invalid direction.");
         }
         return current_location;
     }
@@ -250,7 +277,6 @@ public  class World
     public void DrawMap()
     {
         // wist de terminal (refresht de terminal)
-        Console.Clear();
         // de .GetLength(0)  
         // word gebruikt om de totale number van elementen te vinden in de specifieke dimensie van de array
         for (int y = 0; y < map.GetLength(0); y++)
@@ -260,7 +286,7 @@ public  class World
             {
                 // als x en player x en ook bij y en playery gelijk zijn word er een 1 op de map geplaatst
                 if (x == playerX && y == playerY)
-                    Console.Write('1');
+                    Console.Write(Convert.ToString(map[y, x]).ToUpper());
                 // map word gevuld met de array
                 else
                     Console.Write(map[y, x]);

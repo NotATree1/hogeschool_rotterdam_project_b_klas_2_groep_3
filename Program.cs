@@ -15,13 +15,16 @@ class Program
                 break;
             }
         }
+        game_world.DrawMap();
         Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
         Console.WriteLine(game_world.current_location.Location_Description);
         while (true)
         {
+
             Console.WriteLine("Where do you want to go? E/N/W/S");
             string direction_input = Console.ReadLine();
-            game_world.MoveLocation(direction_input);
+            Console.Clear();
+            Location current_location = game_world.MoveLocation(direction_input);
             game_world.DrawMap();
             Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
             Console.WriteLine(game_world.current_location.Location_Description);
