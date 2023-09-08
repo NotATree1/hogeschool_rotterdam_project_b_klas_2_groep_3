@@ -22,9 +22,10 @@ class Program
             Console.WriteLine("Where do you want to go? E/N/W/S");
             string direction_input = Console.ReadLine();
             game_world.MoveLocation(direction_input);
+            game_world.DrawMap();
             Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
             Console.WriteLine(game_world.current_location.Location_Description);
-            if (game_world.Locations[1].ID == game_world.current_location.ID) break;
+            if (game_world.Locations[3].ID == game_world.current_location.ID) break;
         }
     }
 }    

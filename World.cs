@@ -28,6 +28,17 @@ public  class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
+    public char[,] map = {
+        {' ', ' ', ' ', '#', ' ', ' ', ' ',' '},
+        {' ', ' ', '#', 'P', '#', ' ', ' ',' '},
+        {' ', '#', '#', 'A', '#', '#', '#',' '},
+        {'#', 'V', 'F', 'T', 'G', 'B', 'S','#'},
+        {' ', '#', '#', 'H', '#', '#', '#',' '},
+        {' ', ' ', ' ', '#', ' ', ' ', ' ',' '},
+    };    
+
+    static int playerX = 3; // breedte
+    static int playerY = 2; // lengte
     public  Location current_location;
 
     public World()
@@ -213,11 +224,17 @@ public  class World
 
     public  Location MoveLocation(string direction)
     {
+        Location before_location = current_location;
         string current_direction = direction.ToUpper();
         if (current_direction == "N") current_location = current_location.LocationToNorth;
         else if (current_direction == "E") current_location = current_location.LocationToEast;
         else if (current_direction == "S") current_location = current_location.LocationToSouth;
         else if (current_direction == "W") current_location = current_location.LocationToWest;
+        if (current_location is null)
+        {
+            current_location = before_location;
+            Console.WriteLine("This is an invalid direction.");
+        }
         return current_location;
     }
 
@@ -228,5 +245,27 @@ public  class World
             if (place.ID == ID) return place;
         }
         return null;
+    }
+
+    public void DrawMap()
+    {
+        // wist de terminal (refresht de terminal)
+        Console.Clear();
+        // de .GetLength(0)  
+        // word gebruikt om de totale number van elementen te vinden in de specifieke dimensie van de array
+        for (int y = 0; y < map.GetLength(0); y++)
+        {
+            // hiet word het zelfde gedaan
+            for (int x = 0; x < map.GetLength(1); x++)
+            {
+                // als x en player x en ook bij y en playery gelijk zijn word er een 1 op de map geplaatst
+                if (x == playerX && y == playerY)
+                    Console.Write('1');
+                // map word gevuld met de array
+                else
+                    Console.Write(map[y, x]);
+            }
+            Console.WriteLine();
+        }
     }
 }
