@@ -220,4 +220,13 @@ public  class World
         else if (current_direction == "W") current_location = current_location.LocationToWest;
         return current_location;
     }
+
+    public Location FindLocationByID(int ID)
+    {
+        foreach (Location place in Locations)
+        {
+            if (place.ID == ID) return place;
+        }
+        return null;
+    }
 }
