@@ -35,7 +35,7 @@ public  class World
         {'#', 'V', 'F', 'T', 'G', 'B', 'S','#'},
         {' ', '#', '#', 'H', '#', '#', '#',' '},
         {' ', ' ', ' ', '#', ' ', ' ', ' ',' '},
-    };    
+    };
 
     static int playerX = 3; // breedte
     static int playerY = 2; // lengte
