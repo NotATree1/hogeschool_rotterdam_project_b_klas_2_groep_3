@@ -1,11 +1,11 @@
-public static class World
+public  class World
 {
 
-    public static readonly List<Weapon> Weapons = new List<Weapon>();
-    public static readonly List<Monster> Monsters = new List<Monster>();
-    public static readonly List<Quest> Quests = new List<Quest>();
-    public static readonly List<Location> Locations = new List<Location>();
-    public static readonly Random RandomGenerator = new Random();
+    public  readonly List<Weapon> Weapons = new List<Weapon>();
+    public  readonly List<Monster> Monsters = new List<Monster>();
+    public  readonly List<Quest> Quests = new List<Quest>();
+    public  readonly List<Location> Locations = new List<Location>();
+    public  readonly Random RandomGenerator = new Random();
 
     public const int WEAPON_ID_RUSTY_SWORD = 1;
     public const int WEAPON_ID_CLUB = 2;
@@ -28,9 +28,9 @@ public static class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
-    public Location current_location;
+    public  Location current_location;
 
-    static World()
+    public World()
     {
         PopulateWeapons();
         PopulateMonsters();
@@ -41,13 +41,13 @@ public static class World
     }
 
 
-    public static void PopulateWeapons()
+    public void PopulateWeapons()
     {
         Weapons.Add(new Weapon(WEAPON_ID_RUSTY_SWORD, "Rusty sword", 5));
         Weapons.Add(new Weapon(WEAPON_ID_CLUB, "Club", 10));
     }
 
-    public static void PopulateMonsters()
+    public void PopulateMonsters()
     {
         Monster rat = new Monster(MONSTER_ID_RAT, "rat", 1, 3, 3);
 
@@ -63,7 +63,7 @@ public static class World
         Monsters.Add(giantSpider);
     }
 
-    public static void PopulateQuests()
+    public  void PopulateQuests()
     {
         Quest clearAlchemistGarden =
             new Quest(
@@ -92,7 +92,7 @@ public static class World
         Quests.Add(clearSpidersForest);
     }
 
-    public static void PopulateLocations()
+    public  void PopulateLocations()
     {
         // Create each location
         Location home = new Location(LOCATION_ID_HOME, "Home", "Your house. You really need to clean up the place.", null, null);
@@ -145,7 +145,7 @@ public static class World
 
         spiderField.LocationToWest = bridge;
 
-        // Add the locations to the static list
+        // Add the locations to the  list
         Locations.Add(home);
         Locations.Add(townSquare);
         Locations.Add(guardPost);
@@ -157,7 +157,7 @@ public static class World
         Locations.Add(spiderField);
     }
 
-    public static Location LocationByID(int id)
+    public  Location LocationByID(int id)
     {
         foreach (Location location in Locations)
         {
@@ -170,7 +170,7 @@ public static class World
         return null;
     }
 
-    public static Weapon WeaponByID(int id)
+    public  Weapon WeaponByID(int id)
     {
         foreach (Weapon item in Weapons)
         {
@@ -185,7 +185,7 @@ public static class World
 
 
 
-    public static Monster MonsterByID(int id)
+    public  Monster MonsterByID(int id)
     {
         foreach (Monster monster in Monsters)
         {
@@ -198,7 +198,7 @@ public static class World
         return null;
     }
 
-    public static Quest QuestByID(int id)
+    public  Quest QuestByID(int id)
     {
         foreach (Quest quest in Quests)
         {
@@ -211,35 +211,13 @@ public static class World
         return null;
     }
 
-    public Location MoveLocation(string direction)
+    public  Location MoveLocation(string direction)
     {
-        switch(direction.ToUpper())
-        {
-            case "N": 
-            {
-                if (current_location.LocationToNorth is null) return current_location;
-                else current_location = current_location.LocationToNorth;
-            }
-            case "E":
-            {
-                if (current_location.LocationToEast is null) return;
-                else current_location = current_location.LocationToEast;
-            }
-            case "S":
-            {
-                if (current_location.LocationToSouth is null) return;
-                else current_location = current_location.LocationToSouth;
-            }
-            case "W":
-            {
-                if (current_location.LocationToWest is null) return;
-                else current_location = current_location.LocationToWest;
-            }
-            default:
-            {
-                return;
-            }
-        }
+        string current_direction = direction.ToUpper();
+        if (current_direction == "N") current_location = current_location.LocationToNorth;
+        else if (current_direction == "E") current_location = current_location.LocationToEast;
+        else if (current_direction == "S") current_location = current_location.LocationToSouth;
+        else if (current_direction == "W") current_location = current_location.LocationToWest;
         return current_location;
     }
 }
