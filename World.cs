@@ -211,8 +211,35 @@ public static class World
         return null;
     }
 
-    public static Location MoveLocation(string direction)
+    public Location MoveLocation(string direction)
     {
-        switch direction
+        switch(direction.ToUpper())
+        {
+            case "N": 
+            {
+                if (current_location.LocationToNorth is null) return current_location;
+                else current_location = current_location.LocationToNorth;
+            }
+            case "E":
+            {
+                if (current_location.LocationToEast is null) return;
+                else current_location = current_location.LocationToEast;
+            }
+            case "S":
+            {
+                if (current_location.LocationToSouth is null) return;
+                else current_location = current_location.LocationToSouth;
+            }
+            case "W":
+            {
+                if (current_location.LocationToWest is null) return;
+                else current_location = current_location.LocationToWest;
+            }
+            default:
+            {
+                return
+            }
+        }
+        return current_location;
     }
 }
