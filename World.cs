@@ -28,12 +28,16 @@ public static class World
     public const int LOCATION_ID_BRIDGE = 8;
     public const int LOCATION_ID_SPIDER_FIELD = 9;
 
+    public Location current_location;
+
     static World()
     {
         PopulateWeapons();
         PopulateMonsters();
         PopulateQuests();
         PopulateLocations();
+
+        current_location = Locations[0];
     }
 
 
@@ -205,5 +209,10 @@ public static class World
         }
 
         return null;
+    }
+
+    public static Location MoveLocation(string direction)
+    {
+        switch direction
     }
 }
