@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\rowan\\.nuget\\packages\\": {}
+    "C:\\Users\\tthij\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\hogeschool_rotterdam_project_b_klas_2_groep_3\\groepsopdracht spel maken.csproj",
+      "projectUniqueName": "G:\\Mijn Drive\\informatica\\OODP\\project\\mini project\\hogeschool_rotterdam_project_b_klas_2_groep_3\\groepsopdracht spel maken.csproj",
       "projectName": "groepsopdracht spel maken",
-      "projectPath": "c:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\hogeschool_rotterdam_project_b_klas_2_groep_3\\groepsopdracht spel maken.csproj",
-      "packagesPath": "C:\\Users\\rowan\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\rowan\\OneDrive\\Documents\\school 2023-2024\\project b\\groepsopdracht spel maken\\hogeschool_rotterdam_project_b_klas_2_groep_3\\obj\\",
+      "projectPath": "G:\\Mijn Drive\\informatica\\OODP\\project\\mini project\\hogeschool_rotterdam_project_b_klas_2_groep_3\\groepsopdracht spel maken.csproj",
+      "packagesPath": "C:\\Users\\tthij\\.nuget\\packages\\",
+      "outputPath": "G:\\Mijn Drive\\informatica\\OODP\\project\\mini project\\hogeschool_rotterdam_project_b_klas_2_groep_3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rowan\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\tthij\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -54,12 +54,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.21, 6.0.21]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.21, 6.0.21]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.21, 6.0.21]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.21, 6.0.21]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

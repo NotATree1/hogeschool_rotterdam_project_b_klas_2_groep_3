@@ -19,7 +19,7 @@ class Program
         Console.WriteLine(game_world.current_location.Location_Description);
         while (true)
         {
-            Console.WriteLine("Where do you want to go? E/N/W/S");
+            Console.WriteLine("Where do you want to go? N/E/S/W");
             string direction_input = Console.ReadLine();
             game_world.MoveLocation(direction_input);
             game_world.DrawMap();
@@ -28,4 +28,4 @@ class Program
             if (game_world.Locations[3].ID == game_world.current_location.ID) break;
         }
     }
-}    
+}
