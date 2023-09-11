@@ -21,6 +21,15 @@ class Battle
         {
             this.Monster.Monster_HP -= Player.Attack - Monster.Monster_Defense;
         }
+        if (command == "p" ^ command == "use potion")
+        {
+            this.Player.HP = this.Player.max_HP;
+        }
+        if (command == "run" ^ command == "r")
+        {
+            Console.WriteLine("You ran away from the enemy!!!");
+            return true;
+        }
         return true;
     }
 }

@@ -5,7 +5,7 @@ public class Location
     public string Location_Description;
     public string Location_Unlock_Requirements;
     public bool Location_Unlocked;
-    public List<Quest> QuestAvailableHere = new List<Quest>();
+    public Quest QuestAvailableHere = null;
     public Location LocationToNorth = null;
     public Location LocationToSouth = null;
     public Location LocationToEast = null;

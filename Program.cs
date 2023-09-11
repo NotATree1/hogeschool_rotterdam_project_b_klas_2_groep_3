@@ -2,7 +2,7 @@
 
 class Program
 {
-    public static void Main()
+    public void Main()
     {
         World game_world = new World();
         string player;
