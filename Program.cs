@@ -6,6 +6,7 @@ class Program
     {
         World game_world = new World();
         string player;
+        Console.Clear();
         while (true)
         {
             Console.WriteLine("please input your name");
@@ -28,7 +29,7 @@ class Program
             game_world.DrawMap();
             Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
             Console.WriteLine(game_world.current_location.Location_Description);
-            if (game_world.Locations[3].ID == game_world.current_location.ID) break;
+            if (game_world.Locations[4].ID == game_world.current_location.ID) break;
         }
     }
 }    
