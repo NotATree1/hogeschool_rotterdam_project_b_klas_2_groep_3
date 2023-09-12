@@ -68,11 +68,11 @@ class Program
         while (true)
         {
             string current_result = current_battle.Turn();
-            
-            break;
+            if (current_result == "run") return false;
+            else if (current_result == "lost") return false;
+            else if (current_result == "won") return true;
+            else if (current_result == "continue") continue;
         }
-
-        return true;
     }
 }    
 
