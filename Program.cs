@@ -2,7 +2,8 @@
 
 class Program
 {
-    public void Main()
+
+    public static void Main()
     {
         World game_world = new World();
         string player;
@@ -20,10 +21,10 @@ class Program
         game_world.DrawMap();
         Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
         Console.WriteLine(game_world.current_location.Location_Description);
-
+        play_game(game_world, current_player);
     }
 
-    public void world(World game_world, Player current_player)
+    public static void play_game(World game_world, Player current_player)
     {
         while (true)
         {
@@ -35,7 +36,7 @@ class Program
             game_world.DrawMap();
             Console.WriteLine($"You are currently at {game_world.current_location.Location_Name}");
             Console.WriteLine(game_world.current_location.Location_Description);
-            if (game_world.Locations[4].ID == game_world.current_location.ID) break;
+            if (game_world.Locations[8].ID == game_world.current_location.ID) break;
             if (game_world.current_location.QuestAvailableHere is not null & current_player.current_quests.Contains(game_world.current_location.QuestAvailableHere) is false & current_player.completed_quests.Contains(game_world.current_location.QuestAvailableHere) is false)
             {
                 Console.WriteLine("you encountered a quest!");
@@ -45,14 +46,33 @@ class Program
             }
             if (game_world.current_location.MonsterLivingHere is not null)
             {
-                Battle(game_world.current_location.MonsterLivingHere, current_player);
+                fight_monster(game_world.current_location.MonsterLivingHere, current_player);
             }            
         }
     }
 
-    public void Battle(Monster enemy, Player player)
+    public static bool fight_monster(Monster enemy, Player player)
     {
         Console.WriteLine("you encountered a monster!");
+        Console.WriteLine($"It is a {enemy.Monster_Name}");
+        while (true)
+        {
+            Console.WriteLine("do you want to run {run/r} or do you want to stand and fight{fight/f}?");
+            string current_command = Console.ReadLine().ToLower();
+            if (current_command == "r" ^ current_command == "run") return false;
+            else if (current_command == "f" ^ current_command == "fight") break;
+            else Console.WriteLine("that is an invalid command.");
+        }
+        
+        Battle current_battle = new Battle(enemy, player);
+        while (true)
+        {
+            string current_result = current_battle.Turn();
+            if (current_result == "run") return false;
+            else if (current_result == "lost") return false;
+            else if (current_result == "won") return true;
+            else if (current_result == "continue") continue;
+        }
     }
 }    
 
