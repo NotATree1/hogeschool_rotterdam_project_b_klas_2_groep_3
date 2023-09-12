@@ -10,7 +10,7 @@ class Battle
         this.Player = player;
     }
 
-    public string Turn(string move)
+    public string Turn()
     {
         Console.WriteLine(@"what do you want to do?
         {attack/a}
