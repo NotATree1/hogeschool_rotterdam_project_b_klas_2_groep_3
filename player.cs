@@ -3,12 +3,11 @@ class Player
     
     public string player_name;
     public int Attack = 5;
-    public int defense = 10;
+    public int defense = 2;
     public int HP = 10;
     public int max_HP = 10;
     public List<Quest> current_quests = new List<Quest>();
     public List<Quest> completed_quests = new List<Quest>();
-
 
     public Player(string player_name)
     {

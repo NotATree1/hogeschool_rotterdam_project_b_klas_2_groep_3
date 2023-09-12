@@ -37,8 +37,8 @@ public  class World
         {' ', ' ', ' ', '#', ' ', ' ', ' ',' '},
     };
 
-    static int playerX = 3; // breedte
-    static int playerY = 4; // lengte
+    public int playerX = 3; // breedte
+    public int playerY = 4; // lengte
     public  Location current_location;
 
     public World()
@@ -63,10 +63,10 @@ public  class World
         Monster rat = new Monster(MONSTER_ID_RAT, "rat", 1, 3, 3);
 
 
-        Monster snake = new Monster(MONSTER_ID_SNAKE, "snake", 10, 7, 7);
+        Monster snake = new Monster(MONSTER_ID_SNAKE, "snake", 3, 7, 7);
 
 
-        Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "giant spider", 3, 10, 10);
+        Monster giantSpider = new Monster(MONSTER_ID_GIANT_SPIDER, "giant spider", 5, 10, 10);
 
 
         Monsters.Add(rat);
