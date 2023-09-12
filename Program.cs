@@ -1,5 +1,7 @@
 ﻿// this is the code where we should start
 
+using System.Collections;
+
 class Program
 {
 
@@ -21,22 +23,22 @@ class Program
         game_world.DrawMap();
         Console.WriteLine($"you are {player}. \nYou are currently at {game_world.current_location.Location_Name}");
         Console.WriteLine(game_world.current_location.Location_Description);
-        play_game(game_world, current_player);
+        Play_game(game_world, current_player);
+        Console.WriteLine("thank you so much for playing our game!");
     }
 
-    public static void play_game(World game_world, Player current_player)
+    public static void Play_game(World game_world, Player current_player)
     {
         while (true)
         {
 
-            Console.WriteLine("Where do you want to go? N/E/S/W");
+            Console.WriteLine("Where do you want to go? N/E/S/W/nothing");
             string direction_input = Console.ReadLine();
             Console.Clear();
             Location current_location = game_world.MoveLocation(direction_input);
             game_world.DrawMap();
             Console.WriteLine($"You are currently at {game_world.current_location.Location_Name}");
             Console.WriteLine(game_world.current_location.Location_Description);
-            if (game_world.Locations[8].ID == game_world.current_location.ID) break;
             if (game_world.current_location.QuestAvailableHere is not null & current_player.current_quests.Contains(game_world.current_location.QuestAvailableHere) is false & current_player.completed_quests.Contains(game_world.current_location.QuestAvailableHere) is false)
             {
                 Console.WriteLine("you encountered a quest!");
@@ -46,12 +48,76 @@ class Program
             }
             if (game_world.current_location.MonsterLivingHere is not null)
             {
-                fight_monster(game_world.current_location.MonsterLivingHere, current_player);
+                bool monster_result = Fight_monster(game_world.current_location.MonsterLivingHere, current_player);
+                switch(monster_result)
+                {
+                    case true:
+                    {
+                        Console.WriteLine("you have defeated the monster!");
+                        foreach (Quest quest in current_player.current_quests)
+                        {
+                            if (quest.monster_to_kill == game_world.current_location.MonsterLivingHere)
+                            {
+                                quest.completion_amount += 1;
+                                if (quest.completion_amount == quest.completion_requirement)
+                                {
+                                    Console.WriteLine("You have completed a quest!");
+                                    current_player.quest_completed(quest);
+
+                                    switch (quest.ID)
+                                    {
+                                        case 1:
+                                        {
+                                            Console.WriteLine("After defeating the rats you decide to go find the alchemist who told you to do so."); 
+                                            game_world.MoveLocation("S");
+                                            Console.WriteLine("He gives you leather armor to block blows from future foes. Defense + 5!");
+                                            current_player.defense += 5;
+                                            break;
+                                        }
+                                        case 2:
+                                        {
+                                            Console.WriteLine("After defeating the snakes you decide to go find the farmer who told you to do so."); 
+                                            game_world.MoveLocation("E");
+                                            Console.WriteLine("He gives you a club to deal more damage to future foes. attack + 5!");
+                                            current_player.Attack += 5;
+                                            break;
+                                        }
+                                        case 3:
+                                        {
+                                            Console.WriteLine("After defeating the giant spiders you have defeated the main threat around your home village.");
+                                            Console.WriteLine("these were the last enemies to fight.");
+                                            Console.WriteLine("you have beaten the game!");
+                                            return;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"you have advanced on the quest {quest.Quest_Name}");
+                                    Console.WriteLine($"current completion: {quest.completion_amount}/{quest.completion_requirement}");
+                                }
+                                break;
+                            }
+                        }
+                        Console.WriteLine("You take a rest before continuing your journey.");
+                        Console.WriteLine("You restore back to full health!");
+                        break;
+                    }
+                    case false:
+                    {
+                        game_world.DrawMap();
+                        Console.WriteLine("you returned to the village!");
+                        game_world.current_location = game_world.LocationByID(2);
+                        game_world.playerY = 3;
+                        game_world.playerX = 3;
+                        break;
+                    }
+                }
             }            
         }
     }
 
-    public static bool fight_monster(Monster enemy, Player player)
+    public static bool Fight_monster(Monster enemy, Player player)
     {
         Console.WriteLine("you encountered a monster!");
         Console.WriteLine($"It is a {enemy.Monster_Name}");
@@ -68,7 +134,7 @@ class Program
         while (true)
         {
             string current_result = current_battle.Turn();
-            if (current_result == "run") return false;
+            if (current_result == "ran") return false;
             else if (current_result == "lost") return false;
             else if (current_result == "won") return true;
             else if (current_result == "continue") continue;
