@@ -10,7 +10,7 @@ class Battle
         this.Player = player;
     }
 
-    public bool turn(string move)
+    public string Turn(string move)
     {
         Console.WriteLine(@"what do you want to do?
         {attack/a}
@@ -24,12 +24,22 @@ class Battle
         if (command == "p" ^ command == "use potion")
         {
             this.Player.HP = this.Player.max_HP;
+            
         }
         if (command == "run" ^ command == "r")
         {
             Console.WriteLine("You ran away from the enemy!!!");
-            return true;
+            return "ran";
         }
-        return true;
+        if (this.Monster.Monster_HP <= 0) return "won";
+        Console.WriteLine("The monster is attacking you!");
+        this.Player.HP -= Monster.Monster_Attack - Player.defense;
+        if (this.Player.HP <= 0)
+        {
+            Console.WriteLine("Your HP has hit 0!");
+            Console.WriteLine("You fainted");
+            return "lost";
+        }
+        return "continue";
     }
 }
