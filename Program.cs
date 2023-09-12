@@ -28,7 +28,7 @@ class Program
         while (true)
         {
 
-            Console.WriteLine("Where do you want to go? E/N/W/S");
+            Console.WriteLine("Where do you want to go? N/E/S/W");
             string direction_input = Console.ReadLine();
             Console.Clear();
             Location current_location = game_world.MoveLocation(direction_input);
@@ -55,3 +55,4 @@ class Program
         Console.WriteLine("you encountered a monster!");
     }
 }    
+
