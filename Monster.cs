@@ -5,7 +5,7 @@ public class Monster
     public int Monster_HP;
     public int Monster_Attack;
     public int Monster_Defense;
-    public Monster(int Monster_ID, string Monster_Name, int Monster_HP, int Monster_Attack, int Monster_Defense)
+    public Monster(int Monster_ID, string Monster_Name, int Monster_Defense, int Monster_Attack, int Monster_HP)
     {
         this.ID = Monster_ID;
         this.Monster_Name = Monster_Name;
